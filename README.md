@@ -1,0 +1,4 @@
+preznosql
+=========
+
+NoSql Introduction (French)
