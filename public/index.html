@@ -1,0 +1,839 @@
+<!doctype html>
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>NoSQL - Ce qu'il faut savoir !</title>
+    
+    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+
+
+    <link href="css/jquery.terminal.css" rel="stylesheet" />
+    <link href="css/pretty-json.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/terminal.css" rel="stylesheet" />
+
+
+
+    <!-- Formattage JSON : https://github.com/warfares/pretty-json -->
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/underscore-min.js" ></script>
+    <script src="js/backbone-min.js" ></script>
+    <script src="js/pretty-json-min.js"></script>
+
+    <!-- Terminal : http://terminal.jcubic.pl/ -->
+    <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/jquery.terminal-0.5.4.min.js"></script>
+
+    <!-- Transfert des commandes a NodeJs pour l'exécution de cURL  -->
+    <script src="js/js-curl.js"></script>
+
+
+</head>
+
+<body class="impress-not-supported">
+
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+
+	
+	
+</div>
+
+<div id="impress" data-transition-duration="1000">
+
+    <div class="step slide" data-x="0" data-y="0">
+        <q>
+            <section id="editable" contenteditable="true">
+                <strong>12-14 Les bases du NoSQL</strong>
+                    <br>
+                    <br>
+                Que sait-on des technologies actuelles de stockage de très grands volumes de données ?
+                    <br>
+                    <br>
+                Quand les proposer ?
+                <br>
+                <br>
+                Buzzworld, troll<sup>*</sup>, flaming<sup>**</sup> ou ... réalité ?
+
+            </section>
+        </q>
+    </div>
+
+
+    <div id="1.1" class="step hide" data-x="0" data-y="0">
+        On considérera hors périmètre de cette présentation...
+    </div>
+
+    <div id="1.2" class="step hide" data-x="0" data-y="0">
+        Duel ORACLE Vs NoSQL
+        <br>
+        <img src="images/startcraft.jpg" height="300">
+    </div>
+
+
+    <div id="1.3" class="step hide" data-x="0" data-y="0">
+
+        <img src="images/dontfeelthetroll.jpg" height="300">
+    </div>
+
+
+    <div class="step slide hide" data-x="1500" data-y="0">
+        <q>
+            <section id="editable" contenteditable="true">
+                <ul>
+                    <li>NoSQL : "No SQL" ou "Not only SQL" </li>
+                    <br>
+                    <li>SGBDR /  SGBDNR ( RDBMS / NRDBMS )</li>
+                    <br>
+                    NOR = Not only relational </li>
+                </ul>
+            </section>
+        </q>
+    </div>
+
+    <div class="step slide hide" data-x="1500" data-y="0">
+        <q>
+            <section id="editable" contenteditable="true">
+
+                    <strong> Système de gestion de base de données </strong>
+                    <br>
+                    <br>
+                    Pas basé sur des relations entre tables
+                    <br>
+                    Pas basé sur le SQL
+            </section>
+        </q>
+    </div>
+
+
+    <div id="10.45" class="step hide" data-x="1500" data-y="0">
+        <q>
+
+            <img src="images/nosql.png" height="800">
+
+        </q>
+    </div>
+
+
+
+
+
+    <div class="step slide hide" data-x="1500" data-y="0">
+        <q>
+            <figure>
+                    <strong> Modèles de persistance, Modèles transactionnels </strong>
+
+                    <br>
+                    <br>
+                    ACID : Atomique, Consistent, Isolé, Durable<sup>*<sup/>
+                    <br>
+
+                <span class="footnote"><sup>*</sup> Jim Gray</span>
+
+                <img style="float:right" src="images/ilesfarralon.png" alt="Iles Farralon" height="300">
+            </figure>
+        </q>
+    </div>
+
+
+    <div class="step slide hide" data-x="1500" data-y="0">
+        <q>
+            <strong> Scalabilité </strong>
+
+            <br>
+            <br>
+            Difficile pour des très grands set de données
+            <br>
+            SGBDR non pensé distribution
+            <br>
+            Recherche de DB multi-noeuds
+        </q>
+    </div>
+
+    <div class="step slide hide" data-x="1500" data-y="0">
+        <q>
+            <strong> Scalabilité - Stratégies SGBDR </strong>
+            <br><br>
+            Verticale...Horizontale
+            <br>
+            Master-Slave => écriture / lecture
+            <br>
+            Sharding, Partition => fast, mais perte de relations/joins
+            <br>
+        </q>
+    </div>
+
+
+
+
+    <div id="11.46" class="step hide" data-x="3000" data-y="0">
+        <q>
+            <img src="images/deriveiceberg.png" height="350">
+        </q>
+    </div>
+
+
+
+
+
+    <div class="step slide" data-x="6000" data-y="0">
+        <q>
+            <figure>
+                <strong>Théorème CAP ou théorème de Brewer </strong>
+                <br>
+                <br>
+                Consistance
+                <br>
+
+                Disponibilité
+                <br>
+
+                Partition
+                <br>
+            </figure>
+        </q>
+    </div>
+
+
+
+    <div id="2.1" class="step hide" data-x="6000" data-y="0">
+
+        C
+        <br>
+        <img src="images/CAP1.png" height="300">
+    </div>
+
+    <div id="2.2" class="step hide" data-x="6000" data-y="30">
+        C, P
+        <br>
+        <img src="images/CAP2.png" height="300">
+    </div>
+
+
+    <div id="2.3" class="step hide" data-x="6000" data-y="40">
+
+        D, P
+        <br>
+        <img src="images/CAP3.png" height="300">
+    </div>
+
+
+    <div class="step slide" data-x="7500" data-y="0">
+        <q>
+            <figure>
+                <strong>Consistence éventuelle </strong>
+                <br>
+                <br>
+                # Updates éventuellement propagés sur tous les noeuds lorsqu'un certain temps s'écoule sans update
+                <br>
+                <br>
+                BASE : <strong>B</strong>asically <strong>A</strong>vailable, <strong>S</strong>oft state, <strong>E</strong>ventual Consistency
+
+            </figure>
+        </q>
+    </div>
+
+    <div id="2.31" class="step hide" data-x="7500" data-y="0">
+
+        Basically Available - le système semble fonctionner tout le temps
+
+    </div>
+
+    <div id="2.32" class="step hide" data-x="7500" data-y="0">
+
+        Soft State - il n'est pas nécessaire d'être consistant tout le temps
+    </div>
+
+
+    <div id="2.33" class="step hide" data-x="7500" data-y="0">
+
+        Eventually Consistent - Devient consistant au bout d'un certain temps
+
+    </div>
+
+
+
+
+    <div id="9.45" class="step hide" data-x="7500" data-y="0">
+        <q>
+
+            <img src="images/trianglesynthese.png" height="400">
+
+        </q>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="step slide" data-x="9000" data-y="0">
+        <q>
+            <figure>
+                Exemple d'implémentation : (Apache) <strong>Cassandra</strong>
+               <br>
+                => persistence basée sur les logs
+                <br>
+                => modèle de consistence paramétrable
+                <br>
+
+            </figure>
+        </q>
+    </div>
+
+    <div id="3.0" class="step hide" data-x="9000" data-y="50">
+        <strong>ZERO</strong> n'assure rien, écriture asynchrone en background
+    </div>
+
+
+
+    <div id="3.1" class="step hide" data-x="9000" data-y="50">
+        <strong>ANY</strong> écriture sur au moins 1 noeud
+    </div>
+
+    <div id="3.2" class="step hide" data-x="9000" data-y="55">
+        <strong>ONE</strong> écriture sur au moins 1 log et une table mémoire avant envoit au client
+    </div>
+
+    <div id="3.3" class="step hide" data-x="9000" data-y="60">
+        <strong>QUORUM</strong> assuré d'avoir une écriture sur noeud/2 + 1
+    </div>
+
+    <div id="3.4" class="step hide" data-x="9000" data-y="60">
+        <strong>ALL</strong> assuré d'écriture sur tous les noeuds avant envoit au client
+        <br>
+        Si un noeud ne répond pas, alors le commit est rollbacked
+    </div>
+
+
+
+    <div class="step slide" data-x="10700" data-y="0">
+        <q>
+         <strong> Modèles de présentation des données</strong>
+            <br>
+            <br>
+            Key-value
+            <br>
+            Document
+            <br>
+            Column-family
+            <br>
+            <br>
+            Graph
+        </q>
+    </div>
+
+
+    <div id="3.31" class="step" data-x="10700" data-y="-1000">
+
+        Relationnel classique
+
+        <img src="images/SGBDR.png" height="500">
+
+
+    </div>
+
+    <div id="3.32" class="step hide" data-x="10700" data-y="-1000">
+
+        <strong> PROS </strong> : Schéma unique
+       <br>
+        <strong> CONS </strong> : Différence entre le modèle de programmation et le modèle de distribution
+
+
+    </div>
+
+    <div id="3.33" class="step hide" data-x="10700" data-y="-1000">
+        <q>
+        <strong> Représentation Document </strong>
+        <br>
+        <br>
+        { <br>
+        « ID » : « 10001 »,<br>
+        … <br>
+        « orderlines » : [ {« idItem » : « CCCCCC », « account » : « 22222 »},<br>
+        {« idItem » : « AAAAA », « account » : « 888888 »},<br>
+        ...
+            </q>
+    </div>
+
+
+
+
+    <div class="step slide hide" data-x="10700" data-y="-1000">
+        <q>
+
+            <strong> Représentation Document </strong> : pas de SQL, Comment rechercher ?
+            <br>
+            <br>
+            « type » : « type_dobjet »
+            <br>
+            <br>
+            <strong> duck typing </strong>:
+            « si cela ressemble à un canard, nage comme un canard, cancane comme un canard, alors c’est probablement un canard » (James W. Riley)
+        </q>
+    </div>
+
+
+
+
+    <div class="step slide hide" data-x="10700" data-y="-1000">
+        <q>
+
+            <strong> Avantages </strong>
+            <br>
+            Fusion des modèles programmation / distribution
+            <br>
+            Optimisation du stockage en fonction du modèle de programmation / de l’utilisation de la base
+            <br>
+            <br>
+            <strong> Downside </strong>
+            <br>
+            Si l’agrégat n’est pas conforme à l’accès aux données, l’analyse devient très difficile
+
+        </q>
+    </div>
+
+    <div class="step slide" data-x="13500" data-y="-1000" data-rotate-x="200">
+
+            <strong> Map-reduce</strong>
+
+        <q>
+            <img src="images/mapreduce-sandwich.png" height="600">
+
+        </q>
+    </div>
+
+
+    <div id="3.34" class="step hide" data-x="14000" data-y="-1000" data-rotate-x="200">
+        <q>
+
+            <strong>	Utilisation de vue matérialisées
+            <br>
+            <br>
+
+                	Optimisés pour les clusters
+
+            <br>
+            <br>
+            	Jobs map-reduce permettent de regrouper les données en fonction de différents usages
+                </strong>
+        </q>
+    </div>
+
+
+
+    <div class="step slide hide" data-x="15500" data-y="-1000" data-rotate-x="200">
+
+        <strong> Exemple : Organisations CGI Six</strong>
+
+        <q>
+
+            "serge , ISS, Talend
+            <br>
+            mickael, ISS, HTML5
+            <br>
+            olivier, Commerce, JAVA
+            <br>
+            grégory, Commerce, CSS
+            <br>
+            fabien, CSRA, JAVA, HTML5"
+
+            <br>
+            <br>
+            <strong> Quelles sont les orga avec compétences HTML5 ?</strong>
+
+
+        </q>
+    </div>
+
+
+    <div id="3.35" class="step hide" data-x="15500" data-y="-1000" data-rotate-x="-200">
+        <q>
+            Relationnel :
+            <br>
+            <br>
+            orga -> n emp -> n competence
+            <br>
+            <br>
+            select A.orga, count(A.competence)
+            <br>
+            from (select competence competence, orga orga
+            <br>
+                 from emp where competence = «  HTML5 ») A ...
+
+        </q>
+    </div>
+
+
+    <div id="3.36" class="step hide" data-x="15500" data-y="-1000" data-rotate-x="-200">
+        <q>
+            Map-Reduce :
+            <br>
+            <br>
+            Phase 1 : <strong> Map</strong> :
+            <br>
+            <br>
+            (ISS, Talend)
+            <br>
+            (ISS, HTML5)
+            <br>
+            (Commerce, JAVA)
+            <br>
+            (Commerce, CSS)
+            <br>
+            (CSRA, JAVA)
+            <br>
+            (CSRA, HTML5)
+        </q>
+    </div>
+
+
+    <div id="3.37" class="step hide" data-x="15500" data-y="-1000" data-rotate-x="-200">
+        <q>
+            Map-Reduce :
+            <br><br>
+            Phase 2 : <strong> Reduce</strong> :
+            <br><br>
+            (ISS, 1)
+            <br>
+            (Commerce, 0)
+            <br>
+            (CSRA, 1)
+            <br>
+        </q>
+    </div>
+
+
+
+
+    <div id="9.35" class="step hide" data-x="15500" data-y="-1000" data-rotate-x="-200">
+        <q>
+
+                    <img src="images/query-mapreduce.png" height="400">
+
+        </q>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="step slide hide" data-x="17000" data-y="-1000">
+
+        Quelques statistiques : Recherche/Ecriture Facebook
+        <q>
+
+            <strong>MySQL > 50 GB Data </strong>
+            <br>
+            Writes Average : ~300 ms
+            <br>
+
+            Reads Average : ~350 ms
+            <br><br>
+
+            <strong>Rewritten with Cassandra > 50 GB Data </strong>
+            <br>
+            Writes Average : 0.12 ms
+            <br>
+            Reads Average : 15 ms
+        </q>
+    </div>
+
+
+    <div class="step slide hide" data-x="18500" data-y="-1000">
+
+        Types de bases : 2 familles
+        <q>
+            <strong> 1 - Key / Value </strong>
+                <br>
+                Amazon S3 (Dynamo) <br>
+                Voldemort <br>
+                Scalaris <br>
+                <br>
+
+        </q>
+    </div>
+
+
+
+    <div class="step slide hide" data-x="18500" data-y="-1000">
+
+        Types de bases : 2 familles
+        <q>
+
+            <strong> 2 - Schema-less </strong>
+            <br>
+            Cassandra (column-based) <br>
+            CouchDB (document-based)  <br>
+            Neo4J (graph-based)  <br>
+            HBase (column-based)  <br>
+        </q>
+    </div>
+
+
+
+    <div class="step slide hide" data-x="18500" data-y="-1000">
+
+        Key/Value
+        <q>
+            <strong> PROS : </strong>
+            <br>
+            Rapide, Scalable <br>
+            Modèle simple <br>
+            Possibilité de scaler horizontalement <br>
+            <br>
+
+            <strong> CONS : </strong>
+            <br>
+            De nombreuses structures de données ne sont pas modélisables en key/value <br>
+        </q>
+    </div>
+
+
+    <div class="step slide hide" data-x="18500" data-y="-1000">
+
+        Schema Less
+        <q>
+            <strong> PROS : </strong>
+            <br>
+            Modèles plus riche que key/value <br>
+            Consistance éventuelle <br>
+            Excellente perf et scalabilité malgré tout<br>
+            <br>
+
+            <strong> CONS : </strong>
+            <br>
+            Pas ACID, Pas de jointures<br>
+        </q>
+    </div>
+
+
+    <div id="9.55" class="step hide" data-x="18500" data-y="-1000">
+        <q>
+
+            <img src="images/ComplexiteTaille.png" height="400">
+
+        </q>
+    </div>
+
+
+
+
+    <div class="step slide hide" data-x="20000" data-y="-1000">
+
+        <strong> Retours d'expériences </strong>
+        <q>
+            <strong> CERN <br>
+                Compact Muon Solenoid Experiment (CMS)
+            </strong>
+            <br>
+            <img src="images/CMS.png" height="300">
+
+
+        </q>
+    </div>
+
+
+    <div class="step slide hide" data-x="20000" data-y="-1000">
+
+        <strong> Retours d'expériences  - CERN</strong>
+        <q>
+
+            Détecteur de particules (3600 personnes / 183 instituts scientifiques / 38 pays)
+          <br>
+            10 Po / an
+            <br>
+            <br>
+            CouchDB pour les flux entrants / réplication entre sites / mappé sur des bases oracle
+
+        </q>
+    </div>
+
+    <div id="6" class="step hide" data-x="20000" data-y="-1000">
+
+        <strong> PROS </strong> : courbe d’apprentissage rapide
+        <br>
+        <strong> CONS </strong> : difficulté de désapprentissage du SQL
+
+
+    </div>
+
+
+
+    <div class="step slide hide" data-x="21500" data-y="-1000">
+
+        <strong> Retours d'expériences  - NetFlix</strong>
+        <q>
+
+            TV en ligne (US)
+            <br>
+            SimpleDB, HBase and Cassandra
+            <br>
+            <br>
+            SimpleDB : car AWS / réplication auto inter-région
+            <br>
+            Fonctionnalité liées aux query : key/multi-attributs, batchs, lecture consistente
+
+        </q>
+    </div>
+
+    <div id="7" class="step hide" data-x="21500" data-y="-1000">
+
+        <strong> CONS </strong> : Courbe d’apprentissage / refonte architecturale complexe
+        <br>
+        <strong> PROS </strong> : Couverture de ces 2 faiblesses grâce à performance, scalabilité et disponibilité
+
+
+    </div>
+
+
+
+
+    <div class="step slide hide" data-x="23000" data-y="-1000">
+
+        <strong> Retours d'expériences  - Twitter</strong>
+        <q>
+
+            4 Po an / 12 To par jours
+            <br>
+            80 catégories de données loggés dans HADOOP pour analyse
+            <br>
+            <br>
+            utilisation de Hadoop qui analyse et alimente des graphs dans FlockDB
+            <br>
+            Utilisation de Pig à la place de JAVA : recherche des 5 pages les plus visitées par les 18/25 ans
+
+        </q>
+    </div>
+
+    <div id="8" class="step hide" data-x="23000" data-y="-1000">
+        <img src="images/pig.png" height="500">
+    </div>
+
+
+
+    <div class="step slide hide" data-x="24000" data-y="-1000" data-scale="100">
+
+        <q>
+
+            “I'm confident to say that if you starting a new strategic enterprise application you  <br>
+            should no longer be assuming that your persistence should be relational.”  <br>
+            - Martin Fowler, Inventeur du modèle MVC
+
+
+        </q>
+    </div>
+
+
+    <div id="11.45" class="step hide" data-x="25500" data-y="0">
+        <q>
+            Démo CouchDB<br>
+            <img src="images/Couchdb.png" height="600">
+
+        </q>
+    </div>
+
+
+
+
+    <div class="step slide hide" data-x="25500" data-y="82325" data-z="-3000" data-rotate="300" data-scale="1">
+
+        <div id="result">...</div>
+
+        <div id="terminal"></div>
+
+    </div>
+
+
+
+
+    <div class="step slide hide" data-x="2825" data-y="2325">
+        <q>
+            <strong>Next step ...</strong>
+            <section id="editable" contenteditable="true">
+                <br>
+                Quel client, quelle situation serait favorable ?
+                <br>
+                <br>
+                DAT, Procédure d’exploitation et supervision de bases NoSQL ?
+                <br>
+                <br>
+                Des candidats pour monter une offre NoSQL CGI ?
+                <br>
+            </section>
+        </q>
+    </div>
+
+
+
+
+
+    <div class="step slide hide" data-x="2825" data-y="2325">
+        <q>
+                <strong>Next step ...</strong>
+            <section id="editable" contenteditable="true">
+                <br>
+                Formation personnelle : GIYF !
+                <br>
+                <br>
+                POC BD données de référence, caches mémoires, applications internes CGI....
+                <br>
+                <br>
+                News : http://nosql.mypopescu.com/
+                <br>
+            </section>
+        </q>
+    </div>
+
+
+
+    <div id="999999" class="step" data-x="22825" data-y="2325" data-z="3000" data-rotate="180" data-scale="1" style="background-color: white;">
+
+           <img src="images/pizza.png" height="500">
+
+
+    </div>
+
+</div>
+
+
+<div class="hint">
+    <p> Noooo sequel Style ... Noooo sequel Style </p>
+</div>
+
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+
+</body>
+</html>
