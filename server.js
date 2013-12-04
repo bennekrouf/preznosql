@@ -2,7 +2,7 @@
 // |                                Prez NoSQL                              | \\
 // -------------------------------------------------------------------------- \\
 // |                                                             2013-03-14 | \\
-// | Executions de commandes cURL                                         ♥ | \\
+// | Executions de commandes curl                                         ♥ | \\
 // +========================================================================+ \\
 
 var util    = require('util');
@@ -25,11 +25,17 @@ app.configure(function() {
 	app.use(express.errorHandler({dumpExceptions: true, showStack: true})); // Si une erreur 500 intervient, Express retourne un rapport au format HTML
 });
 
-app.listen(port);
 
-console.log('+---------------------------------------------------+');
+app.listen(port, '0.0.0.0', 511, function() {
+  // Once the server is listening we automatically open up a browser
+  console.log('+---------------------------------------------------+');
 console.log('|                      Présentation No SQL          |');
 console.log('+---------------------------------------------------+');
 console.log('');
 console.log('Serveur HTTP  : http://localhost:' + port + '/');
 console.log('');
+  
+  var open = require('open');
+  open('http://localhost:' + port + '/');
+});
+
