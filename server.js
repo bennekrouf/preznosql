@@ -21,7 +21,7 @@ app.configure(function() {
 	app.use(express.logger('dev'));						// Affichage des requêtes sur la console ('default', 'short', 'tiny', 'dev')
 	app.use(express.bodyParser());      				// Recupération des messages envoyés par le client (req.body)
 	app.use(app.router);                            	// Router (requetes app.VERB, VERB = GET, POST ...)
-	app.use(express.static(__dirname + '/public')); 	// Répertoire des fichiers statiques (page HTML, CSS, etc)
+	app.use(express.static(__dirname)); 	// Répertoire des fichiers statiques (page HTML, CSS, etc)
 	app.use(express.errorHandler({dumpExceptions: true, showStack: true})); // Si une erreur 500 intervient, Express retourne un rapport au format HTML
 });
 
@@ -35,7 +35,7 @@ console.log('');
 console.log('Serveur HTTP  : http://localhost:' + port + '/');
 console.log('');
   
-  var open = require('open');
-  open('http://localhost:' + port + '/');
+  // var open = require('open');
+  // open('http://localhost:' + port + '/');
 });
 
